@@ -15,6 +15,11 @@
         - Named Lock
 3. Redis Distributed Lock
    - 분산환경에서 레디스를 활용하여 동시성 제어
+     - Lettuce
+       - setnx 명령어
+       - spin lock 방식
+     - Redisson
+       - pub-sub 기반으로 Lock 구현
 
 
 ---
@@ -44,4 +49,10 @@ docker exec -it mysql bash
 mysql -u root -p
 create database stock_example;
 use stock_example;
+```
+
+### Redis 설치 및 실행
+```
+docker pull redis
+docker run --name myredis -d -p 6379:6379 redis
 ```
