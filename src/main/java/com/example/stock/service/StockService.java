@@ -15,8 +15,10 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-    @Transactional
-    public void decrease(Long id, Long quantity) {
+//  @Transactional
+    public synchronized void decrease(Long id, Long quantity) {
+        //@Transactional을 사용하지 않고 synchronized를 이용하여 동시성 문제 해결
+
         //get stock
         Stock stock = stockRepository.findById(id).orElseThrow();
 
